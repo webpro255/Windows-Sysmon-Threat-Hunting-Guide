@@ -24,6 +24,31 @@ These are the most important **Windows Event Codes** for tracking suspicious act
 
 | Event ID | Description | Why It’s Useful |
 | -------- | ----------- | --------------- |
+| 1 | **Process Start** | Logs when a process is started, giving visibility into program executions, useful for detecting unauthorized or suspicious processes. |
+| 2 | **Process End** | Tracks when a process ends, useful for detecting when malicious processes are terminated to evade detection. |
+| 3 | **Network Connection Detected** | Logs outbound network connections made by a process, useful for tracking suspicious or unauthorized network activity. |
+| 4 | **Service Start** | Logs when a service is started, helping to monitor for potentially malicious services being run. |
+| 5 | **Service Stop** | Tracks when a service is stopped, which can indicate attempts to disable critical services. |
+| 6 | **Special Privilege Logon** | Logs when a user logs on with special privileges, such as an administrator, which could be used for tracking privilege escalation. |
+| 7 | **Audit Policy Change** | Logs changes to the system's audit policies, which may indicate attempts to hide malicious activity. |
+| 8 | **Logon Failure** | Logs failed login attempts, useful for detecting brute force attacks or unauthorized access attempts. |
+| 9 | **Device Connection** | Logs when a device, such as a USB drive, is connected, useful for tracking unauthorized or suspicious external devices. |
+| 10 | **Device Disconnection** | Logs when a device is disconnected, useful for monitoring the removal of devices after data has been copied or transferred. |
+| 11 | **File System Object Access** | Logs when a file or directory is accessed, useful for detecting unauthorized access to sensitive files. |
+| 12 | **Audit Policy Change** | Logs changes to audit policies, which can indicate that an attacker is attempting to disable logging to hide their activities. |
+| 13 | **Registry Key Access** | Logs access to the registry, particularly useful for detecting attempts to modify registry keys for persistence or privilege escalation. |
+| 14 | **Registry Key Modification** | Tracks when a registry key is modified, which could be indicative of malware attempting to set up persistence or disable security controls. |
+| 15 | **Object Deletion** | Detects when files or directories are deleted, useful for monitoring cleanup activities after an attack. |
+| 16 | **Object Modification** | Logs when objects (files, directories, or other resources) are modified, helping detect tampering with critical files. |
+| 17 | **Registry Key Deletion** | Detects when a registry key is deleted, often used by attackers to remove persistence mechanisms or traces of their activities. |
+| 18 | **User Account Deletion** | Logs when a user account is deleted, which could indicate an attacker removing access to cover tracks. |
+| 19 | **Group Policy Modification** | Detects when a Group Policy is modified, often an indicator of privilege escalation or attempts to disable security controls. |
+| 20 | **Process Injection Detected** | Tracks when malicious code is injected into a legitimate process, commonly used in evasion techniques like process hollowing. |
+| 21 | **Driver Installation** | Logs the installation of drivers, which can detect malicious or unauthorized kernel-level drivers being loaded. |
+| 22 | **Kernel Module Loaded** | Tracks when a kernel module is loaded, often used by rootkits or other sophisticated attacks to gain control over the system. |
+| 23 | **Service Configuration Change** | Logs when a service configuration is modified, which can be used to detect persistence mechanisms or attempts to evade security. |
+| 24 | **Script Blocked** | Logs when a script execution is blocked, useful for tracking potentially malicious scripts like PowerShell or JavaScript used in attacks. |
+| 25 | **Firewall Rule Changed** | Tracks changes to firewall rules, helping detect attempts to open ports or modify traffic filtering to allow malicious traffic. |
 | 4104 | **PowerShell Script Block Logging** | Captures PowerShell script execution for detecting malicious scripts. |
 | 4624 | **Successful Logon** | Tracks all successful logins to detect unauthorized access. |
 | 4688 | **Process Creation** | Logs process creation, including command-line arguments, for detecting malicious behavior. |
@@ -50,6 +75,31 @@ These are the most important **Windows Event Codes** for tracking suspicious act
 | 5145 | **File Share Access** | Logs access to file shares over the network, useful for tracking lateral movement and suspicious access to shared resources. |
 | 1102 | **Security Log Cleared** | Logs when the security event log is cleared, a common tactic attackers use to cover their tracks. |
 | 7036 | **Service Status Changed** | Logs when a service starts or stops, useful for detecting attacks that involve modifying critical services. |
+| 4728 | **A Member Was Added to a Security-Enabled Global Group** | Logs when a user is added to a global security group, helping detect unauthorized privilege escalation. |
+| 4735 | **A Security-Enabled Global Group Was Changed** | Detects modifications to security-enabled global groups, useful for monitoring unauthorized access or group policy changes. |
+| 4740 | **Account Lockout** | Logs when an account is locked out due to too many failed logon attempts, often a sign of brute-force attacks. |
+| 4756 | **A Member Was Added to a Security-Enabled Universal Group** | Logs when a user is added to a universal group, which may indicate unauthorized privilege escalation. |
+| 4767 | **Account Unlocked** | Tracks when a locked account is unlocked, helping identify if attackers are attempting to regain access. |
+| 4778 | **Session Reconnected to Another Device** | Logs when a session is reconnected, useful for detecting unauthorized or suspicious session hijacking. |
+| 4782 | **Password Hash Accessed** | Tracks when password hashes are accessed, which can be a sign of credential dumping attacks. |
+| 4798 | **User's Local Group Membership Enumeration** | Logs when an enumeration of group memberships for a user is performed, which can indicate attackers performing reconnaissance. |
+| 4964 | **Special Groups Logon Tracking** | Detects logons by users who are members of special groups, useful for tracking privileged account usage. |
+| 5025 | **Firewall Service Stopped** | Logs when the Windows Firewall service is stopped, which could indicate an attacker is disabling firewall protection. |
+| 5038 | **Code Integrity Check Failed** | Logs when a code integrity check fails, often due to tampered or unauthorized drivers being loaded, useful for detecting rootkits. |
+| 5058 | **Key File Operation** | Logs cryptographic operations using a key file, useful for detecting unauthorized decryption or encryption activities. |
+| 5142 | **Network Share Created** | Logs when a network share is created, which could be indicative of data exfiltration or lateral movement. |
+| 5143 | **Network Share Deleted** | Detects the deletion of a network share, useful for identifying attempts to cover tracks after data exfiltration. |
+| 6416 | **Code Integrity Violation** | Logs violations of code integrity policies, useful for detecting unauthorized code execution or DLL hijacking. |
+| 4725 | **User Account Disabled** | Tracks when a user account is disabled, which can indicate the removal of access privileges in response to suspicious behavior. |
+| 4627 | **Group Membership Enumeration** | Detects when a user queries group memberships, often used during reconnaissance by attackers. |
+| 4647 | **User Initiated Logoff** | Logs when a user manually logs off, useful for detecting suspicious session terminations. |
+| 4769 | **A Kerberos Service Ticket Was Requested** | Logs Kerberos ticket requests, useful for detecting abnormal ticket-granting patterns, like Pass-the-Ticket attacks. |
+| 4770 | **A Kerberos Service Ticket Was Renewed** | Logs Kerberos ticket renewals, helping to monitor for suspicious renewal activity that could indicate a prolonged attack. |
+| 4673 | **A Privileged Service Was Called** | Detects calls to services with elevated privileges, useful for identifying unauthorized privileged operations. |
+| 4690 | **Attempted Access to an Object by an Invalid Handle** | Logs when a process attempts to access an object with an invalid handle, useful for detecting malicious code files or processes incorrectly. |
+| 5031 | **Windows Firewall Blocked an Application** | Logs when the Windows Firewall blocks an application, useful for detecting network-based threats attempting to connect externally. |
+| 5059 | **Key Migration Operation** | Detects cryptographic key migration, which may signal attempts to export or manipulate security keys. |
+
 
 ---
 
@@ -80,9 +130,30 @@ Below are **Sysmon Event Codes** that are essential for advanced threat hunting:
 | 25| **Process Tampering** | Detects when processes are tampered with, like in-memory injection. Critical for detecting evasive techniques like process hollowing. |
 | 26| **File Delete Logged** | Logs the deletion of files, useful in tracking cleanup activity after an attack. |
 | 27| **Registry Object Deleted** | Logs when a registry object is deleted, often tied to the removal of persistence mechanisms. |
-| 28 | **Thread Injection** | Detects when malicious code is injected into legitimate process threads. Useful for identifying sophisticated in-memory attacks. |
-| 29 | **File Created Logged** | Logs the creation of files, providing visibility into unauthorized file creation attempts, often a precursor to malware execution. |
-| 225 | **Process Terminated** | Tracks when processes are forcefully terminated, which can indicate malicious attempts to stop security services or evade detection. |
+| 28| **Thread Injection** | Detects when malicious code is injected into legitimate process threads. Useful for identifying sophisticated in-memory attacks. |
+| 29| **File Created Logged** | Logs the creation of files, providing visibility into unauthorized file creation attempts, often a precursor to malware execution. |
+| 30| **DNS Query Response** | Logs the response to DNS queries, which is useful for detecting command-and-control domains or other suspicious communications. |
+| 32| **File Integrity Monitoring** | Tracks file modifications in critical directories. Helps detect tampering with key files or configuration files. |
+| 33| **Parent-Child Process Correlation** | Correlates parent and child processes, useful for identifying process creation anomalies or malicious process chains. |
+| 35| **Binary File Execution** | Logs the execution of binary files, useful for detecting unauthorized or malicious binary execution in restricted directories. |
+| 36| **Image File Execution Options (IFEO) Hijacking** | Detects modifications to Image File Execution Options (IFEO), often used by attackers to hijack legitimate processes for persistence. |
+| 37| **LSASS Access Detected** | Logs access to LSASS (Local Security Authority Subsystem Service), which is crucial for detecting credential dumping techniques used by attackers. |
+| 38| **AMSI (Antimalware Scan Interface) Detection** | Logs when AMSI is triggered, which is useful for detecting malware attempting to bypass security solutions or evade detection. |
+| 39| **Registry Hive Changes** | Tracks changes to registry hives, helping detect modifications attackers make to establish persistence or elevate privileges. |
+| 40| **Security Log Tampering** | Detects tampering with security logs, often used by attackers to cover their tracks. |
+| 41| **Event Log Service State** | Logs changes to the event logging service, useful for detecting when attackers attempt to disable logging to evade detection. |
+| 42| **Remote Thread Injection** | Logs the injection of threads into remote processes, a common attack technique used to execute malicious code in a legitimate process. |
+| 43| **Service Configuration Change** | Detects changes in service configurations, which can signal persistence mechanisms or privilege escalation. |
+| 44| **Parent Process ID Spoofing** | Detects attempts to spoof the parent process ID, a common technique used in evasion tactics to make malicious processes appear legitimate. |
+| 45| **Executable File Permissions Changed** | Logs when the permissions of executable files are changed, which could indicate privilege escalation or malicious tampering. |
+| 46| **Suspicious PowerShell Commands Detected** | Detects the execution of potentially malicious PowerShell commands or scripts, which are frequently used in advanced attacks. |
+| 47| **USB Device Insertion** | Logs when a USB device is inserted, which can help detect data exfiltration or unauthorized devices. |
+| 48| **Kerberos Ticket Requests** | Logs Kerberos ticket requests, useful for detecting pass-the-ticket attacks or abnormal authentication behavior. |
+| 49| **Process Command-Line Logging** | Captures the command-line arguments of executed processes, providing insight into the actions being performed, useful for threat hunting. |
+| 50| **Persistence Mechanism Detected** | Detects common persistence techniques, such as startup folder modification or registry autorun changes. |
+| 51| **Remote Desktop Connection Detected** | Logs remote desktop connections, which can help detect unauthorized remote access to critical systems. |
+| 225| **Process Terminated** | Tracks when processes are forcefully terminated, which can indicate malicious attempts to stop security services or evade detection. |
+
 
 ---
 
