@@ -80,6 +80,9 @@ Below are **Sysmon Event Codes** that are essential for advanced threat hunting:
 | 25| **Process Tampering** | Detects when processes are tampered with, like in-memory injection. Critical for detecting evasive techniques like process hollowing. |
 | 26| **File Delete Logged** | Logs the deletion of files, useful in tracking cleanup activity after an attack. |
 | 27| **Registry Object Deleted** | Logs when a registry object is deleted, often tied to the removal of persistence mechanisms. |
+| 28 | **Thread Injection** | Detects when malicious code is injected into legitimate process threads. Useful for identifying sophisticated in-memory attacks. |
+| 29 | **File Created Logged** | Logs the creation of files, providing visibility into unauthorized file creation attempts, often a precursor to malware execution. |
+| 225 | **Process Terminated** | Tracks when processes are forcefully terminated, which can indicate malicious attempts to stop security services or evade detection. |
 
 ---
 
